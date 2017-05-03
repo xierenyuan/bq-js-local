@@ -1,0 +1,32 @@
+{
+  "name": "bq-js-local",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "rollup -c -w",
+    "build": "NODE_ENV=production rollup -c"
+  },
+  "author": {
+    "name": "谢仁洪",
+    "email": "xierenyuan@qq.com"
+  },
+  "files": [
+    "dist/index.min.js"
+  ],
+  "main": "dist/index.min.js",
+  "repository": "git@github.com:xierenyuan/bq-js-local.git",
+  "license": "MIT",
+  "dependencies": {
+    "bagjs": "^3.0.0",
+    "rollup-plugin-node-resolve": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-latest": "^6.24.1",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-livereload": "^0.4.0",
+    "rollup-plugin-serve": "^0.3.0",
+    "rollup-plugin-uglify": "^1.0.2",
+    "rollup-watch": "^3.2.2"
+  }
+}
