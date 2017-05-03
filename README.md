@@ -18,3 +18,9 @@ yarn add bq-js-local -S
 import bqLocal from 'bq-js-local'
 bqLocal.init()
 ```
+
+or script 引入
+
+``` js
+this.bqLocal.init()
+```

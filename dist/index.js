@@ -138,7 +138,6 @@ var bag = createCommonjsModule(function (module) {
     this.clear = function (expiredOnly) {
       var now = +new Date();
       var p = P.resolve();
-
       _each(localStorage, function (val, name) {
         var key = name.split(_ns)[1];
 
@@ -359,6 +358,7 @@ var bag = createCommonjsModule(function (module) {
 
 
     this.clear = function (expiredOnly) {
+      console.log('clear expiredOnly', expiredOnly);
       return new P(function (resolve, reject) {
         var keyrange = window.IDBKeyRange,
             tx       = db.transaction('kv', 'readwrite'),
@@ -820,7 +820,7 @@ var DEFAULT_OPTIONS = {
   // 默认获取 js 来源
   tag: ['noscript'],
   // 默认加载资源
-  lazyload: ['http://cdnjs.gtimg.com/cdnjs/libs/zepto/1.1.4/zepto.min.js'],
+  lazyload: ['//cdnjs.gtimg.com/cdnjs/libs/zepto/1.1.4/zepto.min.js'],
   doc: document
 };
 
@@ -858,7 +858,22 @@ function init() {
     });
   });
   var bag$$1 = new bag(localOptios);
-  return bag$$1.require(lazyLoad);
+  return {
+    lazyLoad: lazyLoad,
+    require: function require() {
+      var _lazyLoad = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : lazyLoad;
+
+      return bag$$1.require(_lazyLoad);
+    },
+    clear: function clear() {
+      var expiredOnly = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
+      return bag$$1.clear(expiredOnly);
+    },
+    remove: function remove(key) {
+      return bag$$1.remove(key);
+    }
+  };
 }
 
 exports.init = init;

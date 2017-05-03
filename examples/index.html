@@ -6,12 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
+    <button id="btn">清空</button>
     <noscript>
     </noscript>
      <script src="index.js"></script>
      <script>
-       this.bqLocal.init().then(function(res){
-         console.log(res)
+       let a = this.bqLocal.init()
+       // a.clear(false)
+       a.require().then(function(){
+         console.log($)
+       })
+       document.querySelectorAll('#btn')[0].addEventListener('click',e => {
+         a.clear(false).then(function(){
+           console.log($)
+           window.location.reload()
+         })
        })
      </script>
   </body>

@@ -1,6 +1,6 @@
 {
   "name": "bq-js-local",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "scripts": {
     "start": "rollup -c -w",
     "build": "NODE_ENV=production rollup -c"
@@ -17,7 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "bagjs": "^3.0.0",
-    "rollup-plugin-node-resolve": "^3.0.0"
+    "bq-js-local": "^1.0.1"
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.22.0",
@@ -25,6 +25,7 @@
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-livereload": "^0.4.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-serve": "^0.3.0",
     "rollup-plugin-uglify": "^1.0.2",
     "rollup-watch": "^3.2.2"

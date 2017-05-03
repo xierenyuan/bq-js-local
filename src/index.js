@@ -3,7 +3,7 @@ const DEFAULT_OPTIONS = {
   // 默认获取 js 来源
   tag : ['noscript'],
   // 默认加载资源
-  lazyload: ['http://cdnjs.gtimg.com/cdnjs/libs/zepto/1.1.4/zepto.min.js'],
+  lazyload: ['//cdnjs.gtimg.com/cdnjs/libs/zepto/1.1.4/zepto.min.js'],
   doc: document
 }
 
@@ -38,7 +38,18 @@ export function init(option = DEFAULT_OPTIONS, localOptios = {
 		})
   })
   let bag = new Bag(localOptios)
-  return bag.require(lazyLoad)
+  return {
+    lazyLoad: lazyLoad,
+    require(_lazyLoad = lazyLoad ) {
+      return bag.require(_lazyLoad)
+    },
+    clear(expiredOnly = true) {
+      return bag.clear(expiredOnly)
+    },
+    remove(key) {
+      return bag.remove(key)
+    }
+  }
 }
 
 
