@@ -2,7 +2,7 @@
   "name": "bq-js-local",
   "version": "1.0.2",
   "scripts": {
-    "start": "rollup -c -w",
+    "start": "NODE_ENV=development rollup -c -w",
     "build": "NODE_ENV=production rollup -c"
   },
   "author": {
@@ -17,15 +17,22 @@
   "license": "MIT",
   "dependencies": {
     "bagjs": "^3.0.0",
-    "bq-js-local": "^1.0.1"
+    "bq-js-local": "^1.0.1",
+    "lie": "^3.1.1",
+    "lodash.assign": "^4.2.0"
   },
   "devDependencies": {
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-livereload": "^0.4.0",
     "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-replace": "^1.1.1",
     "rollup-plugin-serve": "^0.3.0",
     "rollup-plugin-uglify": "^1.0.2",
     "rollup-watch": "^3.2.2"

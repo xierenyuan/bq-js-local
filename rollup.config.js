@@ -4,6 +4,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import uglify from 'rollup-plugin-uglify'
 import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
+import replace from 'rollup-plugin-replace'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -12,12 +13,16 @@ export default {
   format: 'iife',
   moduleName: 'bqLocal',
   plugins: [
+    replace({
+      'process.browser' : true
+    }),
     resolve({
     customResolveOptions: {
       moduleDirectory: 'node_modules'
     }}),
     babel({
-      exclude: 'node_modules/**' 
+      plugins: ['external-helpers'],
+      exclude: 'node_modules/**'
     }),
     commonjs({
       include: 'node_modules/**'
@@ -27,8 +32,9 @@ export default {
      open: true,
      contentBase: ['examples/', 'dist/'],   //启动文件夹;
       host: 'localhost',      //设置服务器;
-      port: 8000             //端口号;
+      port: 9999             //端口号;
     })),
+
     (!isProduction && livereload({
       watch: 'dist/'   //监听文件夹;
     }))

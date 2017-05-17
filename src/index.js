@@ -1,4 +1,4 @@
-import Bag from 'bagjs'
+import Bag from './local'
 const DEFAULT_OPTIONS = {
   // 默认获取 js 来源
   tag : ['noscript'],
@@ -13,7 +13,7 @@ const DEFAULT_OPTIONS = {
  * @export
  * @see https://github.com/nodeca/bag.js/blob/master/bag.js
  * @param {any} [option=DEFAULT_OPTIONS] 
- * @param {string} [localOptios={
+ * @param {string}  [localOptios={
  *   	prefix: 'bq_local',
  * 		stores: ['indexeddb', 'websql', 'localstorage'],
  * 		expire: 1
@@ -22,6 +22,7 @@ const DEFAULT_OPTIONS = {
  */
 export function init(option = DEFAULT_OPTIONS, localOptios = {
   	prefix: 'bq_local',
+    // ['indexeddb', 'websql', 'localstorage']
 		stores: ['indexeddb', 'websql', 'localstorage'],
 		expire: 1
 }) {
@@ -48,6 +49,12 @@ export function init(option = DEFAULT_OPTIONS, localOptios = {
     },
     remove(key) {
       return bag.remove(key)
+    },
+    get(key) {
+      return bag.get(key)
+    },
+    set(key, data, expire) {
+      return bag.set(key, data, expire)
     }
   }
 }
